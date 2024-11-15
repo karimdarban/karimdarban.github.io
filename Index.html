@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professor Karim Darban</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto Slab', serif;
+    }
+    a {
+      color: #45a759;
+    }
+    a:hover {
+      color: #347b41;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto px-4 py-8">
+    <header class="flex items-center mb-8">
+      <img src="https://media.licdn.com/dms/image/v2/D4E03AQF3kFdpnucuTQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1729713190586?e=1736985600&v=beta&t=k9tN4BTMStRqzkRmz8sp3f9vSJUOxB0LVrsSvW8LDgc" alt="Professor Karim Darban" class="rounded-full mr-4 w-32 h-32">
+      <div>
+        <h1 class="text-3xl font-bold mb-2">Professor Karim Darban</h1>
+        <p class="text-gray-600">Academic, Researcher, and Professor</p>
+      </div>
+    </header>
+    
+    <nav class="bg-white shadow-md rounded-lg mb-8 p-4">
+      <ul class="flex justify-center space-x-4">
+        <li><a href="#events" class="text-gray-600 hover:text-gray-800">Events</a></li>
+        <li><a href="#publications" class="text-gray-600 hover:text-gray-800">Scientific Publications</a></li>
+        <li><a href="#courses" class="text-gray-600 hover:text-gray-800">Courses</a></li>
+        <li><a href="#projects" class="text-gray-600 hover:text-gray-800">Projects</a></li>
+      </ul>
+    </nav>
+
+    <section id="events" class="bg-white shadow-md rounded-lg p-4 mb-8">
+      <h2 class="text-2xl font-bold mb-4">Events</h2>
+      <div class="overflow-x-auto">
+        <div class="flex space-x-4">
+          {% for event in site.events %}
+            <div class="flex-shrink-0 w-64">
+              <img src="{{ event.image }}" alt="{{ event.title }}" class="rounded-lg">
+              <h3 class="text-xl font-bold mt-2">{{ event.title }}</h3>
+              <p>{{ event.date }}</p>
+              <p>{{ event.description }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section id="publications" class="bg-white shadow-md rounded-lg p-4 mb-8">
+      <h2 class="text-2xl font-bold mb-4">Scientific Publications</h2>
+      {% for publication in site.publications %}
+        <div class="mb-4">
+          <h3 class="text-xl font-bold">{{ publication.title }}</h3>
+          <p>{{ publication.authors }}</p>
+          <p>{{ publication.journal }} ({{ publication.year }})</p>
+          <p>{{ publication.abstract }}</p>
+        </div>
+      {% endfor %}
+    </section>
+
+    <section id="courses" class="bg-white shadow-md rounded-lg p-4 mb-8">
+      <h2 class="text-2xl font-bold mb-4">Courses</h2>
+      {% for course in site.courses %}
+        <div class="mb-4">
+          <h3 class="text-xl font-bold">{{ course.title }}</h3>
+          <p>{{ course.description }}</p>
+          <p>{{ course.semester }}</p>
+        </div>
+      {% endfor %}
+    </section>
+
+    <section id="projects" class="bg-white shadow-md rounded-lg p-4 mb-8">
+      <h2 class="text-2xl font-bold mb-4">Projects</h2>
+      {% for project in site.projects %}
+        <div class="mb-4">
+          <h3 class="text-xl font-bold">{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+          <p>{{ project.funding }}</p>
+        </div>
+      {% endfor %}
+    </section>
+  </div>
+</body>
+</html>
